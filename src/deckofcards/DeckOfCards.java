@@ -12,7 +12,7 @@ public class DeckOfCards {
 		for (Card.Suits suite : Card.Suits.values()) {
 			for (Card.Ranks rank : Card.Ranks.values()) {
 				mCards.add(new Card(suite, rank));
-			 }
+			}
 		}
 	}
 
@@ -44,10 +44,11 @@ public class DeckOfCards {
 	 ********************************************************************************/
 	//Function to display the cards
 	public void displayCards() {
-		int i = 1;
+		int index = 1;
 		for (Card str : mCards) {
-            System.out.println("displayCards -- " + str.suiteToString() + " " + str.rankToString() + " ---- " + i);
-            i++;
-        }
+			System.out.println("displayCards -- " + str.suiteToString() + " " + str.rankToString() +
+								" -- " + index);
+			index++;
+		}
 	}
 }
