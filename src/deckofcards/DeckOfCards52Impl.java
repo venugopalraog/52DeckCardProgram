@@ -2,7 +2,7 @@ package deckofcards;
 
 import java.util.*;
 
-public class DeckOfCards52 implements IDeckOfCards{
+public class DeckOfCards52Impl implements IDeckOfCards{
 	List<Card> mCards;
 	private static final int FIRST_CARD = 0;
 	/********************************************************************************
@@ -74,5 +74,16 @@ public class DeckOfCards52 implements IDeckOfCards{
 			System.out.println("ArrayIndexOutOfBounds Exception" + e);
 		}
 		return strCard;
+	}
+
+	/********************************************************************************
+	 * Function Name : getSize
+	 * Description : This function size of List items.
+	 ********************************************************************************/
+	public int getSize() {
+		if (mCards == null) { 
+			return 0;
+		}
+		return mCards.size();
 	}
 }

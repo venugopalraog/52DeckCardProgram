@@ -1,6 +1,8 @@
 package deckofcards;
 
 import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -8,13 +10,27 @@ import org.junit.Test;
  *
  */
 public class DOC52UnitTest {
+	DeckOfCards52Impl mDeckOfCards = null;
+
+	@Before
+	public void setUp() throws Exception {
+		mDeckOfCards = new DeckOfCards52Impl();
+		assertNotNull(mDeckOfCards);
+		mDeckOfCards.initializeCards();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		mDeckOfCards = null;
+	}
+
 	/**
-	 * Test method for {@link deckofcards.DeckOfCards#DeckOfCards()}.
+	 * Test method for {@link deckofcards.DeckOfCards#shuffleCards()}.
 	 */
 	@Test
-	public void testInitializeCards() {
-		DeckOfCards52 mDeckOfCards = new DeckOfCards52();
-		mDeckOfCards.initializeCards();
+	public void initializeCards() { 
+		int size = mDeckOfCards.getSize();
+		assertFalse(size != 52);
 	}
 
 	/**
@@ -22,9 +38,11 @@ public class DOC52UnitTest {
 	 */
 	@Test
 	public void testShuffleCards() {
-		DeckOfCards52 mDeckOfCards = new DeckOfCards52();
-		mDeckOfCards.initializeCards();
+		assertNotNull(mDeckOfCards);
+		String card1 = mDeckOfCards.getItem(0);
 		mDeckOfCards.shuffleCards();
+		String card2 = mDeckOfCards.getItem(0);
+		assertFalse(card1.equals(card2));
 	}
 
 	/**
@@ -32,9 +50,7 @@ public class DOC52UnitTest {
 	 */
 	@Test
 	public void testDeal() {
-		DeckOfCards52 mDeckOfCards = new DeckOfCards52();
 		assertNotNull(mDeckOfCards);
-		mDeckOfCards.initializeCards();
 		String deal1 = mDeckOfCards.deal();
 		String deal2 = mDeckOfCards.deal();
 		assertFalse(deal1.equals(deal2));
@@ -45,9 +61,7 @@ public class DOC52UnitTest {
 	 */
 	@Test
 	public void testDisplayCards() {
-		DeckOfCards52 mDeckOfCards = new DeckOfCards52();
 		assertNotNull(mDeckOfCards);
-		mDeckOfCards.initializeCards();
 		mDeckOfCards.displayCards();
 	}
 
@@ -56,10 +70,8 @@ public class DOC52UnitTest {
 	 */
 	@Test
 	public void testGetItem() {
-		DeckOfCards52 mDeckOfCards = new DeckOfCards52();
 		String card = null;
 		assertNotNull(mDeckOfCards);
-		mDeckOfCards.initializeCards();
 		for (int index = 0; index <52; index++) {
 			card = mDeckOfCards.getItem(index);
 			assertNotNull(card);	
